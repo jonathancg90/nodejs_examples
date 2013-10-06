@@ -1,13 +1,22 @@
 extends layout
 
 block content
-	div#login
-		p Nickname:
-		input#nickname
-		p#wait Espere un momento ...
-	div#chat
-		ol#list-messages
 
-		div
-		input#messages(type='text')
-		input#submit-message(type='button', value='enviar')
+    form#login-form(class='form-horizontal')
+        div#login(class='form-group')
+            label(for='Nickname',class='col-lg-2 control-label') Nickname :
+            div(class='col-lg-2')
+                input#nickname(class='form-control',placeholder='Enter your nickname')
+    p#wait Espere un momento ...
+    div#chat
+        div(class='row')
+            div(class='msg col-xs-12 col-sm-6 col-md-8')
+                ol#list-messages
+            div(class='usr col-xs-6 col-sm-6 col-md-4')
+                h3 Usuarios conectados:
+                ol#list-users
+
+        form(class='form-horizontal send')
+            div(class='form-group')
+                input#messages(type='text', class='form-control-static')
+            input#submit-message(type='button', value='enviar', class='btn btn-info')

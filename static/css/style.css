@@ -1,0 +1,17 @@
+#container > h1{
+    text-align: center;
+}
+.msg{
+    border: solid 1px;
+    border-radius: 1em;
+    border-color: rgb(104,192,249);
+}
+.usr{
+    border: solid 1px;
+    border-radius: 1em;
+    border-color: rgb(104,192,249);
+}
+.send{
+    text-align: center;
+    margin-top: 1em;
+}

@@ -21,6 +21,10 @@ $(function(){
 				setNickname($(this).val());
 			}
 		});
+        $( "#login-form" ).submit(function(e){
+            e.preventDefault();
+            setNickname($('#nickname').val());
+        });
 		$wait.hide();
 	}
 

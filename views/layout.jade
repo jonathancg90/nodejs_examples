@@ -1,10 +1,17 @@
 doctype 5
 html
     head
-        script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
-        script(src="/js/chat.js")
-        script(src="/socket.io/socket.io.js")
+        title HelloChat
+        link(rel='stylesheet', href="/css/bootstrap.min.css")
+        link(rel='stylesheet', href="/css/bootstrap-theme.min.css")
+        link(rel='stylesheet', href="/css/style.css")
     body
-        #container
+        #container(class='container')
+            <h1>Hello Chat</h1>
 
-        block content
+            block content
+
+    script(src="/js/jquery-1.10.js")
+    script(src="/js/bootstrap.min.js")
+    script(src="/js/chat.js")
+    script(src="/socket.io/socket.io.js")
