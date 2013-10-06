@@ -14,8 +14,8 @@ module.exports = function(io){
 
 		});
 
-		socket.on('message', function(nickname, msg){
-			sendMessage(nickname, msg);
+		socket.on('message', function(msg){
+			sendMessage(socket.nickname, msg);
 		});
 
 		socket.on('disconnect', function(){

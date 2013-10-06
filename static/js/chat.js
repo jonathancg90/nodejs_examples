@@ -3,6 +3,9 @@ $(function(){
 		$chat = $('#chat');
 		$submit_message = $('#submit-message');
 		$messages = $('#messages');
+		$wait = $('#wait');
+
+	$chat.hide();
 	var socket = io.connect('/');
 
 	socket.on('connect', function(){
@@ -18,8 +21,7 @@ $(function(){
 				setNickname($(this).val());
 			}
 		});
-
-		$chat.hide();
+		$wait.hide();
 	}
 
 	var setNickname = function(nickname){
