@@ -1,5 +1,5 @@
 /* Variables estaticas */
-var PORT = 8080;
+var PORT = process.env.PORT || 8080;
 /*Dependencias*/
 var express = require('express'),
 	io = require('socket.io'),
