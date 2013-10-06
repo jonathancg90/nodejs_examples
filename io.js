@@ -11,6 +11,7 @@ module.exports = function(io){
 				socket.nickname = nickname;
 			callback(avaible);
 			sendMessage('SERVER', 'User @'+nickname+' has connected');
+            sendUser();
 
 		});
 
@@ -20,6 +21,7 @@ module.exports = function(io){
 
 		socket.on('disconnect', function(){
 			sendMessage('SERVER', 'User @'+socket.nickname+' has disconnected');
+            sendUser();
 		});
 
 
@@ -28,6 +30,22 @@ module.exports = function(io){
 			console.log('Recepcionando mensaje: '+msg);
 			io.sockets.emit('message', nickname, msg);
 		}
+
+        var sendUser =  function() {
+            var data = [],
+                clients =  io.sockets.clients();
+            i = 0;
+            console.log('Clientes server: '+clients);
+            for(var client in clients){
+                client = clients[client];
+                if(client.nickname != null){
+                    data[i]=client.nickname;
+                    console.log(data[i]);
+                    i++;
+                }
+            }
+            io.sockets.emit('users', data);
+        }
 
 		var isNickNameAvaible =  function(nickname){
 			var clients =  io.sockets.clients();

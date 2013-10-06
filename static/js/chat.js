@@ -14,6 +14,7 @@ $(function(){
 	});
 
 	var init = function(){
+        //Ingreso por nickname
 		$("#nickname").keyup(function(e){
 			var code = e.which  || e.keyCode ;
 
@@ -47,10 +48,19 @@ $(function(){
 		$submit_message.click(function(){
 			sendMessage($messages.val());
 		});
+        $( "#send-message" ).submit(function(e){
+            e.preventDefault();
+            sendMessage($('#messages').val());
+        });
 
+        //Actualiza mensajes que escriben
 		socket.on('message', function(nickname, message){
 			addMessage(nickname, message);
 		});
+        //Actualiza usuarios
+        socket.on('users', function(nickname){
+            addUsers(nickname);
+        });
 
 	}
 
@@ -61,5 +71,11 @@ $(function(){
 	var addMessage =  function(nickname, message){
 		$('#list-messages').append($("<li>@"+ nickname +": "+ message +"</li>"));
 	}
+    var addUsers =  function(nicknames){
+        $('#list-users').empty();
+        for(var id in nicknames){
+            $('#list-users').append($("<li>@"+ nicknames[id] +"  - <a href='#' ><span class='glyphicon glyphicon-eye-close'></span></a></li>"));
+        }
+    }
 
 });
